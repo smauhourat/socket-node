@@ -17,12 +17,14 @@ function render(data) {
 }
 
 function addMessage(e) {
-    console.log("envioooo");
     debugger;
     var payload = {
-        author: document.getElementById('username').text,
-        text: document.getElementById('texto').text
+        author: document.getElementById('username').value,
+        text: document.getElementById('texto').value
     };
+    document.getElementById('username').value = "";
+    document.getElementById('texto').value = "";
+
     socket.emit('new-message', payload);
     
     return false;
