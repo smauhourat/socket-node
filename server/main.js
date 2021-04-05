@@ -22,6 +22,9 @@ io.on('connection', function(socket) {
         messages.push(data);
         io.sockets.emit('messages', messages);
     });
+    socket.on('char:typing', function(data){
+        socket.broadcast.emit('char:typing', data);
+    });
 });
 
 server.listen(8080, function() {

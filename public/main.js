@@ -1,8 +1,15 @@
 var socket = io.connect('http://localhost:8080', { 'forceNew': true });
 
+var username = document.getElementById('username');
+var texto = document.getElementById('texto');
+
 socket.on("messages", function(data){
-    console.log(data);
+    document.getElementById('actions').innerHTML = "";
     render(data);
+});
+
+socket.on('char:typing', function(data){
+    document.getElementById('actions').innerHTML = data;
 });
 
 function render(data) {
@@ -17,7 +24,6 @@ function render(data) {
 }
 
 function addMessage(e) {
-    debugger;
     var payload = {
         author: document.getElementById('username').value,
         text: document.getElementById('texto').value
@@ -29,3 +35,8 @@ function addMessage(e) {
     
     return false;
 }
+
+texto.addEventListener('keypress', function () {
+    socket.emit('char:typing', `${username.value} is typing.....`);
+});
+

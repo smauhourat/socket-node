@@ -5,16 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My App</title>
-    <script src="socket.io/socket.io.js"></script>
-    <script src="main.js"></script>
+    
 </head>
 <body>
     <h1>My App</h1>
     <div id="messages"></div>
     <form onsubmit="return addMessage(this)">
+        <div id="actions"></div>
         <input type="text" placeholder="Usuario" id="username">
-        <input type="text" placeholder="Mensaje" id="texto">
+        <input type="text" placeholder="Mensaje" id="texto" name="texto">
         <input type="submit" name="" value="Enviar">
     </form>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
